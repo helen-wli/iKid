@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PunViewController.swift
 //  iKid
 //
 //  Created by Helen Li on 5/6/22.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class GoodViewController: UIViewController {
+class PunViewController: UIViewController {
     
-    var firstViewController : GoodFirstViewController! = nil
-    var secondViewController : GoodSecondViewController! = nil
-    var thirdViewController : GoodThirdViewController! = nil
+    var firstViewController : PunFirstViewController! = nil
+    var secondViewController : PunSecondViewController! = nil
+    var thirdViewController : PunThirdViewController! = nil
     
     @IBAction func switchViews(_ sender: Any) {
         thirdBuilder()
@@ -28,7 +28,7 @@ class GoodViewController: UIViewController {
             secondViewController.view.frame = self.view.frame
             switchViewController(firstViewController, to: secondViewController)
         } else if secondViewController != nil &&
-            secondViewController?.view.superview != nil {
+                    secondViewController?.view.superview != nil {
             UIView.setAnimationTransition(.flipFromRight, for: view, cache: true)
             thirdViewController.view.frame = self.view.frame
             switchViewController(secondViewController, to: thirdViewController)
@@ -54,9 +54,10 @@ class GoodViewController: UIViewController {
             to!.didMove(toParent: self)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
         firstBuilder()
         switchViewController(nil, to: firstViewController)
@@ -66,8 +67,8 @@ class GoodViewController: UIViewController {
         if firstViewController == nil {
             firstViewController =
                 storyboard?
-                    .instantiateViewController(withIdentifier: "GoodFirst")
-                as? GoodFirstViewController
+                    .instantiateViewController(withIdentifier: "PunFirst")
+                as? PunFirstViewController
         }
     }
     
@@ -75,8 +76,8 @@ class GoodViewController: UIViewController {
         if secondViewController == nil {
             secondViewController =
                 storyboard?
-                    .instantiateViewController(withIdentifier: "GoodSecond")
-                as? GoodSecondViewController
+                    .instantiateViewController(withIdentifier: "PunSecond")
+                as? PunSecondViewController
         }
     }
     
@@ -84,10 +85,20 @@ class GoodViewController: UIViewController {
         if thirdViewController == nil {
             thirdViewController =
                 storyboard?
-                    .instantiateViewController(withIdentifier: "GoodThird")
-                as? GoodThirdViewController
+                    .instantiateViewController(withIdentifier: "PunThird")
+                as? PunThirdViewController
         }
     }
     
-}
 
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
